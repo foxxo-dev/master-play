@@ -32,7 +32,7 @@ async function getDownloadSong(id) {
     method: 'GET',
     url: 'https://spotify-scraper.p.rapidapi.com/v1/track/download',
     params: {
-      track: 'Lego House Ed Sheeran'
+      track: id
     },
     headers: {
       'X-RapidAPI-Key': '6f0e580618msh62f4d72ea78d41dp1f48b3jsnd8199558d9bf',
