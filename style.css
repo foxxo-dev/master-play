@@ -22,6 +22,20 @@ main {
   position: relative;
 }
 
+@media (max-width: 1000px) {
+  main {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    overflow-y: auto;
+    padding: 0.5rem;
+  }
+}
+
 main::after {
   content: '';
   position: absolute;

@@ -30,6 +30,7 @@
         addDoc
       } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
       import axios from 'axios';
+      import { getDownloadSong } from '../fetch-api';
 
       // Your web app's Firebase configuration
       const firebaseConfig = {
@@ -53,16 +54,24 @@
         const querySnapshot = await getDocs(collection(db, 'playlist'));
         querySnapshot.forEach(async (doc) => {
           //   let iframe = await generateIframe(doc.data().id);
-          let iframe = '';
-          iframesArray.push({ id: doc.data().id, iframe: iframe });
-          console.log(iframesArray);
+          let iframe = document.createElement('iframe');
+          let song = await getDownloadSong(doc.data().id);
+          if (!song) {
+            iframe = '';
+          } else {
+            iframe.src = song.url;
+            console.log('---------------------------------------------');
+            console.log(song);
+            console.log('---------------------------------------------');
+            iframesArray.push({ id: doc.data().id, iframe: iframe });
+          }
 
           console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
           document.querySelector('ul').innerHTML += `<li>${
             doc.data().name
           } <button onclick="downld('${
             doc.data().id
-          }')">Download Track!</button> ${iframe} </li>`;
+          }')">Download Track!</button> ${iframe.outerHTML} </li>`;
         });
       };
 

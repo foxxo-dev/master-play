@@ -48,12 +48,13 @@ musicNameInput.addEventListener('keydown', async (e) => {
     if (inputValue !== '') {
       try {
         // Add a new document to the 'playlist' collection
-        const data = await search('Put your hands up in the air');
+        const data = await search(inputValue);
         const song = data.tracks[0].data;
+        const id = song.id;
         await addDoc(collection(db, 'playlist'), {
           name: inputValue,
-          author: 'Test',
-          id: song.id
+          author: '-- Feature to be added in later development - This is a placeholder - Current update: v0.0.2 --',
+          id
         });
 
         console.log(`Added: ${inputValue}`);

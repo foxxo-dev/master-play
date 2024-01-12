@@ -18,12 +18,34 @@ async function search(query) {
   };
 
   try {
-    const response = await axios.request(options);
+    // const response = await axios.request(options);
     console.log(response.data);
+    response.data = {};
     return response.data;
   } catch (error) {
     console.error(error);
   }
 }
 
-export { search };
+async function getDownloadSong(id) {
+  const options = {
+    method: 'GET',
+    url: 'https://spotify-scraper.p.rapidapi.com/v1/track/download',
+    params: {
+      track: 'Lego House Ed Sheeran'
+    },
+    headers: {
+      'X-RapidAPI-Key': '6f0e580618msh62f4d72ea78d41dp1f48b3jsnd8199558d9bf',
+      'X-RapidAPI-Host': 'spotify-scraper.p.rapidapi.com'
+    }
+  };
+
+  try {
+    const response = await axios.request(options);
+    console.log(response.data);
+    return response.data.youtubeVideo.audio[0];
+  } catch (error) {
+    console.error(error);
+  }
+}
+export { search, getDownloadSong };
