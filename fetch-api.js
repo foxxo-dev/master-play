@@ -18,7 +18,7 @@ async function search(query) {
   };
 
   try {
-    // const response = await axios.request(options);
+    const response = await axios.request(options);
     console.log(response.data);
     response.data = {};
     return response.data;
