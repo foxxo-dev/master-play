@@ -75,45 +75,45 @@
         });
       };
 
-      //   async function generateIframe(id) {
-      //     const options = {
-      //       method: 'GET',
-      //       url: 'https://spotify81.p.rapidapi.com/download_track',
-      //       params: {
-      //         q: 'test',
-      //         onlyLinks: '1'
-      //       },
-      //       headers: {
-      //         'X-RapidAPI-Key':
-      //           '6f0e580618msh62f4d72ea78d41dp1f48b3jsnd8199558d9bf',
-      //         'X-RapidAPI-Host': 'spotify81.p.rapidapi.com'
-      //       }
-      //     };
+      async function generateIframe(id) {
+        const options = {
+          method: 'GET',
+          url: 'https://spotify81.p.rapidapi.com/download_track',
+          params: {
+            q: 'test',
+            onlyLinks: '1'
+          },
+          headers: {
+            'X-RapidAPI-Key':
+              '6f0e580618msh62f4d72ea78d41dp1f48b3jsnd8199558d9bf',
+            'X-RapidAPI-Host': 'spotify81.p.rapidapi.com'
+          }
+        };
 
-      //     try {
-      //       const response = await axios.request(options);
+        try {
+          const response = await axios.request(options);
 
-      //       // Check if the response contains an array and has the 'url' property
-      //       if (Array.isArray(response.data) && response.data[0].url) {
-      //         var iframe = document.createElement('iframe');
-      //         iframe.src = response.data[0].url;
-      //         iframe.width = '300';
-      //         iframe.height = '80';
-      //         iframe.frameborder = '0';
-      //         iframe.allowtransparency = 'true';
-      //         iframe.allow = 'encrypted-media';
-      //         return iframe;
-      //       } else {
-      //         console.error(
-      //           'Invalid response format from Spotify API:',
-      //           response.data
-      //         );
-      //         return document.createElement('iframe');
-      //       }
-      //     } catch (error) {
-      //       console.error('Error fetching data from Spotify API:', error);
-      //     }
-      //   }
+          // Check if the response contains an array and has the 'url' property
+          if (Array.isArray(response.data) && response.data[0].url) {
+            var iframe = document.createElement('iframe');
+            iframe.src = response.data[0].url;
+            iframe.width = '300';
+            iframe.height = '80';
+            iframe.frameborder = '0';
+            iframe.allowtransparency = 'true';
+            iframe.allow = 'encrypted-media';
+            return iframe;
+          } else {
+            console.error(
+              'Invalid response format from Spotify API:',
+              response.data
+            );
+            return document.createElement('iframe');
+          }
+        } catch (error) {
+          console.error('Error fetching data from Spotify API:', error);
+        }
+      }
 
       // Call fetchData to log existing data on page load
       fetchData();
