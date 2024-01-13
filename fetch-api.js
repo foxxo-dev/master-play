@@ -20,7 +20,7 @@ async function search(query) {
   try {
     const response = await axios.request(options);
     console.log(response.data);
-    response.data = {};
+    // response.data = {};
     return response.data;
   } catch (error) {
     console.error(error);
